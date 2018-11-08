@@ -1,0 +1,21 @@
+<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+
+  <mat-form-field class="header">
+    <input type="text" matInput placeholder="Наименование платежа" [formControl]="titleFormControl" [errorStateMatcher]="matcher">
+    <mat-error *ngIf="titleFormControl.hasError('required')">
+      Введите название
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="header">
+    <input type="number" matInput placeholder="Стоимость платежа за месяц" [formControl]="costFormControl"
+      [errorStateMatcher]="matcher">
+    <mat-error *ngIf="costFormControl.invalid">
+      Стоимость должна содержать только цифры и быть больше нуля
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="paymentForm.invalid">Добавить</button>
+
+
+</form>

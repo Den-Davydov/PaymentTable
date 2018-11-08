@@ -1,0 +1,138 @@
+<!-- <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Наименование платежа</th>
+      <th scope="col">Стоимость</th>
+      <th scope="col">Янв</th>
+      <th scope="col">Фев</th>
+      <th scope="col">Мар</th>
+      <th scope="col">Апр</th>
+      <th scope="col">Май</th>
+      <th scope="col">Июн</th>
+      <th scope="col">Июл</th>
+      <th scope="col">Авг</th>
+      <th scope="col">Сен</th>
+      <th scope="col">Окт</th>
+      <th scope="col">Ноя</th>
+      <th scope="col">Дек</th>
+      <th scope="col">Удалить</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let payment of payments">
+      <td>{{payment.title}}</td>
+      <td>{{payment.cost}}</td>
+      <td *ngFor="let item of payment.items">
+        <mat-checkbox [checked]="item.checked" (change)="change(item,payment)"></mat-checkbox>
+      </td>
+      <td (click)="delete(payment)">
+        <mat-icon>sentiment_very_dissatisfied</mat-icon>
+      </td>
+    </tr>
+
+  </tbody>
+</table> -->
+
+<table mat-table [dataSource]="payments" class="mat-elevation-z8">
+  <ng-container matColumnDef="Наименование платежа">
+    <th mat-header-cell *matHeaderCellDef> Наименование платежа </th>
+    <td mat-cell *matCellDef="let payment"> {{payment.title}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Стоимость">
+    <th mat-header-cell *matHeaderCellDef> Стоимость </th>
+    <td mat-cell *matCellDef="let payment"> {{payment.cost}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="Янв">
+    <th mat-header-cell *matHeaderCellDef> Янв </th>
+    <td mat-cell *matCellDef="let payment">
+      <mat-checkbox [checked]="payment.items[0].checked" (change)="change(payment.items[0],payment)"></mat-checkbox>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="Фев">
+    <th mat-header-cell *matHeaderCellDef> Фев </th>
+    <td mat-cell *matCellDef="let payment">
+      <mat-checkbox [checked]="payment.items[1].checked" (change)="change(payment.items[1],payment)"></mat-checkbox>
+    </td>
+    
+  </ng-container>
+  <ng-container matColumnDef="Мар">
+    <th mat-header-cell *matHeaderCellDef> Мар </th>
+    <td mat-cell *matCellDef="let payment">
+      <mat-checkbox [checked]="payment.items[2].checked" (change)="change(payment.items[2],payment)"></mat-checkbox>
+    </td>
+   
+  </ng-container>
+  <ng-container matColumnDef="Апр">
+    <th mat-header-cell *matHeaderCellDef> Апр </th>
+    <td mat-cell *matCellDef="let payment">
+      <mat-checkbox [checked]="payment.items[3].checked" (change)="change(payment.items[3],payment)"></mat-checkbox>
+    </td>
+   
+  </ng-container>
+  <ng-container matColumnDef="Май">
+    <th mat-header-cell *matHeaderCellDef> Май </th>
+    <td mat-cell *matCellDef="let payment">
+      <mat-checkbox [checked]="payment.items[4].checked" (change)="change(payment.items[4],payment)"></mat-checkbox>
+    </td>
+   
+  </ng-container>
+  <ng-container matColumnDef="Июн">
+    <th mat-header-cell *matHeaderCellDef> Июн </th>
+    <td mat-cell *matCellDef="let payment">
+      <mat-checkbox [checked]="payment.items[5].checked" (change)="change(payment.items[5],payment)"></mat-checkbox>
+    </td>
+    
+  </ng-container>
+  <ng-container matColumnDef="Июл">
+    <th mat-header-cell *matHeaderCellDef> Июл </th>
+    <td mat-cell *matCellDef="let payment">
+      <mat-checkbox [checked]="payment.items[6].checked" (change)="change(payment.items[6],payment)"></mat-checkbox>
+    </td>
+    
+  </ng-container>
+  <ng-container matColumnDef="Авг">
+    <th mat-header-cell *matHeaderCellDef> Авг </th>
+    <td mat-cell *matCellDef="let payment">
+      <mat-checkbox [checked]="payment.items[7].checked" (change)="change(payment.items[7],payment)"></mat-checkbox>
+    </td>
+    
+  </ng-container>
+  <ng-container matColumnDef="Сен">
+    <th mat-header-cell *matHeaderCellDef> Сен </th>
+    <td mat-cell *matCellDef="let payment">
+      <mat-checkbox [checked]="payment.items[8].checked" (change)="change(payment.items[8],payment)"></mat-checkbox>
+   
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="Окт">
+    <th mat-header-cell *matHeaderCellDef> Окт </th>
+    <td mat-cell *matCellDef="let payment">
+      <mat-checkbox [checked]="payment.items[9].checked" (change)="change(payment.items[9],payment)"></mat-checkbox>
+   
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="Ноя">
+    <th mat-header-cell *matHeaderCellDef> Ноя </th>
+    <td mat-cell *matCellDef="let payment">
+      <mat-checkbox [checked]="payment.items[10].checked" (change)="change(payment.items[10],payment)"></mat-checkbox>
+    
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="Дек">
+    <th mat-header-cell *matHeaderCellDef> Дек </th>
+    <td mat-cell *matCellDef="let payment">
+      <mat-checkbox [checked]="payment.items[11].checked" (change)="change(payment.items[11],payment)"></mat-checkbox>
+    
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="Удалить">
+      <th mat-header-cell *matHeaderCellDef> Удалить </th>
+      <td mat-cell *matCellDef="let payment">
+        <mat-icon (click)="delete(payment)">sentiment_very_dissatisfied</mat-icon>
+      
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

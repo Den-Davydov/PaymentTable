@@ -1,0 +1,7 @@
+
+
+<app-header-payment (addPayment)="addPayment($event)"></app-header-payment>
+
+<app-table-payment  [payments]="payments" (deletePayment)="deletePayment($event)" (changePaymentItem)="changePaymentItem($event)"></app-table-payment>
+
+<app-total-cost-payment [totalCost]="totalCost"></app-total-cost-payment>
