@@ -29,7 +29,7 @@ export class FormPaymentComponent implements OnInit {
         this.payments = data
         this.calculationCost();
       });
-
+   
   }
 
   addPayment(payment: Payment) {
